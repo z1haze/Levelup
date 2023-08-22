@@ -61,7 +61,7 @@ public class DiscordCommand {
 
                             if (lplayer.discordLinked != null && lplayer.discordLinked) {
                                 instance.getDiscord().unlink(lplayer);
-                                sendColorized(ctx.getSender(), instance.getMessage("discord.prefix") + " " + instance.getMessage("discord.unlinked"));
+                                sendColorized(ctx.getSender(), instance.getMessage("prefix") + " " + instance.getMessage("discord.link.unlinked"));
                             }
                         })
         );

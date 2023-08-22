@@ -50,7 +50,7 @@ public class LinkCommand {
         }
 
         // send confirmations
-        e.reply(instance.getMessage("discord.link.success").replaceAll("&", "")).setEphemeral(true).queue();
+        e.reply(instance.getMessage("discord.link.success").replaceAll("&a", "")).setEphemeral(true).queue();
 
         Player p = instance.getServer().getPlayer(lplayer.uuid);
 

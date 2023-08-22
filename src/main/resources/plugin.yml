@@ -31,7 +31,7 @@ permissions:
     default: true
   levelup.command.pinfo:
     description: Allows you to see your player info
-    default: true
+    default: op
   levelup.command.pinfo.others:
     description: Allows you to see your another players info
     default: op
