@@ -105,5 +105,8 @@ public class Commands {
 
         // register /discord commands
         new DiscordCommand(manager);
+
+        // register /pinfo commands
+        new PlayerInfoCommand(manager);
     }
 }

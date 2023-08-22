@@ -34,14 +34,16 @@ public final class LevelUp extends JavaPlugin {
 
         playerDataManager = new PlayerDataManager();
         permissionsManager = new PermissionsManager();
+        discord = new Discord();
 
-        // init custom quests
         new Quests();
-
-        this.discord = new Discord();
-
+        new Placeholders(this).register();
         new Commands().registerCommands();
 
+        registerEvents();
+    }
+
+    private void registerEvents() {
         // keep player profile data up to date
         getServer().getPluginManager().registerEvents(new LevelUpPlayerListener(), this);
 
