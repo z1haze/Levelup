@@ -1,0 +1,31 @@
+name: LevelUp
+version: '${project.version}'
+author: z1haze
+main: me.z1haze.levelup.LevelUp
+api-version: '1.20'
+depend: [PlaceholderAPI, GriefDefender, AdvancedEnchantments, BattlePass, LuckPerms]
+permissions:
+  levelup.command:
+    description: Allows you to access LevelUp
+    default: true
+  levelup.command.version:
+    description: Allows you to access LevelUp
+    default: true
+  levelup.command.fly:
+    description: Allows you to toggle your flight
+    default: op
+  levelup.command.fly.others:
+    description: Allows you to toggle flight for other players
+    default: op
+  levelup.command.trash:
+    description: Allows you to open your trash can GUI
+    default: op
+  levelup.command.discord:
+    description: Allows you view the discord invitation link
+    default: true
+  levelup.command.discord.link:
+    description: Allows you link your mc account to your discord account
+    default: op
+  levelup.command.discord.unlink:
+    description: Allows you link your unlink your mc and discord account
+    default: true
