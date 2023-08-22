@@ -3,6 +3,8 @@ package me.z1haze.levelup;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import me.z1haze.levelup.storage.DataAccessor;
+import me.z1haze.levelup.utils.PermissionUtils;
+import net.luckperms.api.LuckPerms;
 import org.bukkit.entity.Player;
 
 import java.io.File;
@@ -15,14 +17,17 @@ public class PlayerDataManager {
     private final Map<UUID, LevelUpPlayer> playerData = new HashMap<>();
     private final String directory = "playerdata";
     private final DataAccessor da;
+    private final LuckPerms luckPerms;
 
     private final Gson gson = new GsonBuilder()
             .setPrettyPrinting()
             .create();
 
     public PlayerDataManager() {
-        this.da = new DataAccessor(instance.getDataFolder().getPath());
+        da = new DataAccessor(instance.getDataFolder().getPath());
         da.makeDirectory(directory);
+
+        luckPerms = instance.getPermissionsManager().getLuckPerms();
     }
 
     public LevelUpPlayer getPlayerData(UUID uuid) {
@@ -46,6 +51,7 @@ public class PlayerDataManager {
 
         if (da.exists(directory + File.separator + p.getUniqueId() + ".json")) {
             lplayer = gson.fromJson(da.read(directory + File.separator + p.getUniqueId() + ".json"), LevelUpPlayer.class);
+            lplayer.level = PermissionUtils.getCurrentGroupOnTrackForUser(luckPerms, luckPerms.getUserManager().getUser(lplayer.uuid), "autorank").getName();
 
             // keep name updated
             if (!p.getName().equals(lplayer.name)) {
@@ -65,10 +71,11 @@ public class PlayerDataManager {
 
     public void playerQuit(Player p) {
         LevelUpPlayer lplayer = getPlayerData(p.getUniqueId());
+
         if (lplayer == null) return;
 
-        // TODO: add last seen time to player profile
-//        savePlayerData(lplayer);
+        lplayer.level = PermissionUtils.getCurrentGroupOnTrackForUser(luckPerms, luckPerms.getUserManager().getUser(lplayer.uuid), "autorank").getName();
+        savePlayerData(lplayer);
         playerData.remove(p.getUniqueId());
     }
 }

@@ -32,8 +32,8 @@ public final class LevelUp extends JavaPlugin {
 
         initConfigs();
 
-        playerDataManager = new PlayerDataManager();
         permissionsManager = new PermissionsManager();
+        playerDataManager = new PlayerDataManager();
         discord = new Discord();
 
         new Quests();

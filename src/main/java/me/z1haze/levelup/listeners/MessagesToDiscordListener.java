@@ -2,7 +2,6 @@ package me.z1haze.levelup.listeners;
 
 import me.z1haze.levelup.LevelUp;
 import me.z1haze.levelup.discord.Discord;
-import net.dv8tion.jda.api.JDA;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,6 +1,5 @@
 package me.z1haze.levelup.config;
 
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;

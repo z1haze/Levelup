@@ -51,7 +51,6 @@ public class PlayerInfoCommand {
 
     private void sendPlayerInfo(CommandSender sender, OfflinePlayer player, LevelUpPlayer lplayer) {
         sendColorized(sender, "§bLevel: §7" + lplayer.level);
-        sendColorized(sender, "§bLevel: §7" + lplayer.level);
 
         SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 

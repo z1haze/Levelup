@@ -6,8 +6,6 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
-import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
-import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -135,8 +133,8 @@ public class BotListener extends ListenerAdapter {
 
                 instance.getServer().broadcastMessage(
                         colorize(instance.getMessage("prefix")
-                        + " " + instance.getMessage("discord.prefix")
-                        + " &f" + m.getMember().getEffectiveName() + ": " ) + m.getContentRaw()
+                                + " " + instance.getMessage("discord.prefix")
+                                + " &f" + m.getMember().getEffectiveName() + ": ") + m.getContentRaw()
                 );
             }
         }

@@ -4,7 +4,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 public class ConfigAE extends Configurator {
     public ConfigAE(JavaPlugin plugin, String fileName) {
