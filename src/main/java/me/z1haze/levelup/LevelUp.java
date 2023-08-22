@@ -8,6 +8,7 @@ import me.z1haze.levelup.config.Configurator;
 import me.z1haze.levelup.discord.Discord;
 import me.z1haze.levelup.listeners.*;
 import me.z1haze.levelup.managers.PermissionsManager;
+import me.z1haze.levelup.quests.Quests;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -33,6 +34,9 @@ public final class LevelUp extends JavaPlugin {
 
         playerDataManager = new PlayerDataManager();
         permissionsManager = new PermissionsManager();
+
+        // init custom quests
+        new Quests();
 
         this.discord = new Discord();
 

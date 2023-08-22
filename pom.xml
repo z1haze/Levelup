@@ -135,6 +135,15 @@
             <systemPath>${basedir}/AdvancedEnchantments-8.7.4.jar</systemPath>
         </dependency>
 
+        <!-- battlepass -->
+        <dependency>
+            <groupId>io.github.battlepass</groupId>
+            <artifactId>battlepass</artifactId>
+            <version>LATEST</version>
+            <systemPath>${basedir}/BattlePass-3.18.8.jar</systemPath>
+            <scope>system</scope>
+        </dependency>
+
         <!-- JDA (discord bot) -->
         <dependency>
             <groupId>net.dv8tion</groupId>
