@@ -14,7 +14,7 @@ public class SpawnMobQuest extends QuestExecutor {
         super(battlePlugin);
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onMobSpawn(CreatureSpawnEvent e) {
         CreatureSpawnEvent.SpawnReason spawnReason = e.getSpawnReason();
 
