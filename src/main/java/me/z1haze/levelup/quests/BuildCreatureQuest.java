@@ -9,8 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-public class SpawnMobQuest extends QuestExecutor {
-    public SpawnMobQuest(BattlePlugin battlePlugin) {
+public class BuildCreatureQuest extends QuestExecutor {
+    public BuildCreatureQuest(BattlePlugin battlePlugin) {
         super(battlePlugin);
     }
 
@@ -29,7 +29,7 @@ public class SpawnMobQuest extends QuestExecutor {
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getLocation().distanceSquared(entityLocation) <= Math.pow(5, 2)) {
-                executionBuilder("spawn-mob")
+                executionBuilder("build-creature")
                         .player(p)
                         .root(entity.getType().toString())
                         .progressSingle()

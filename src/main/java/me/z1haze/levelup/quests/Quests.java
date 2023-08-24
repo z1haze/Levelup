@@ -7,6 +7,6 @@ public class Quests {
     public Quests() {
         QuestRegistry questRegistry = BattlePlugin.getApi().getQuestRegistry();
 
-        questRegistry.quest(SpawnMobQuest::new);
+        questRegistry.quest(BuildCreatureQuest::new);
     }
 }
