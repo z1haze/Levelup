@@ -9,6 +9,10 @@ import me.z1haze.levelup.discord.Discord;
 import me.z1haze.levelup.listeners.*;
 import me.z1haze.levelup.managers.PermissionsManager;
 import me.z1haze.levelup.quests.Quests;
+import me.z1haze.levelup.support.ProtocolLibSupport;
+import me.z1haze.levelup.ui.ActionBar;
+import me.z1haze.levelup.ui.ActionBarCompatHandler;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -21,6 +25,8 @@ public final class LevelUp extends JavaPlugin {
     private PlayerDataManager playerDataManager;
     private PermissionsManager permissionsManager;
     private Discord discord;
+    private ProtocolLibSupport protocolLibSupport;
+    private ActionBar actionBar;
 
     public static LevelUp getInstance() {
         return instance;
@@ -41,30 +47,46 @@ public final class LevelUp extends JavaPlugin {
         new Commands().registerCommands();
 
         registerEvents();
+
+        protocolLibSupport = new ProtocolLibSupport();
+        new ActionBarCompatHandler().registerListeners();
+        actionBar.startUpdateActionBar();
     }
 
     private void registerEvents() {
+        PluginManager pm = getServer().getPluginManager();
+
         // keep player profile data up to date
-        getServer().getPluginManager().registerEvents(new LevelUpPlayerListener(), this);
+        pm.registerEvents(new LevelUpPlayerListener(), this);
 
         // control when/where players can fly
-        getServer().getPluginManager().registerEvents(new PlayerFlightListener(), this);
+        pm.registerEvents(new PlayerFlightListener(), this);
 
         // send chat message to discord
-        getServer().getPluginManager().registerEvents(new MessagesToDiscordListener(), this);
+        pm.registerEvents(new MessagesToDiscordListener(), this);
 
         // sync a linked player's groups with discord roles
-        getServer().getPluginManager().registerEvents(new DiscordRoleSyncListener(), this);
+        pm.registerEvents(new DiscordRoleSyncListener(), this);
 
         // remove loot that shouldn't be in random loot chests caused by advanced enchantments
-        getServer().getPluginManager().registerEvents(new PlayerLootListener(), this);
+        pm.registerEvents(new PlayerLootListener(), this);
 
         // listen for config updates
-        getServer().getPluginManager().registerEvents(new ConfigReloadListener(), this);
+        pm.registerEvents(new ConfigReloadListener(), this);
+
+        actionBar = new ActionBar();
     }
 
     public Discord getDiscord() {
         return discord;
+    }
+
+    public ProtocolLibSupport getProtocolLibSupport() {
+        return protocolLibSupport;
+    }
+
+    public ActionBar getActionBar() {
+        return actionBar;
     }
 
     public String getMessage(String name) {

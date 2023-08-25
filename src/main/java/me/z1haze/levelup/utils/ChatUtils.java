@@ -27,7 +27,6 @@ public class ChatUtils {
         }
 
         return finalText.toString();
-
     }
 
     public static void sendColorized(CommandSender sender, String str) {

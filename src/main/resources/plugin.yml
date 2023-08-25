@@ -3,7 +3,7 @@ version: '${project.version}'
 author: z1haze
 main: me.z1haze.levelup.LevelUp
 api-version: '1.20'
-depend: [ PlaceholderAPI, GriefDefender, AdvancedEnchantments, BattlePass, LuckPerms ]
+depend: [ PlaceholderAPI, GriefDefender, AdvancedEnchantments, BattlePass, LuckPerms, ProtocolLib ]
 permissions:
   levelup.command:
     description: Allows you to access LevelUp
