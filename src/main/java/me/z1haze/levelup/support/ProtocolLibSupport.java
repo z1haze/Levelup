@@ -8,7 +8,7 @@ import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import org.bukkit.entity.Player;
 
 public class ProtocolLibSupport {
-    private static ProtocolManager protocolManager;
+    public static ProtocolManager protocolManager;
 
     public ProtocolLibSupport() {
         protocolManager = ProtocolLibrary.getProtocolManager();

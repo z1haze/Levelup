@@ -15,6 +15,8 @@ public class ConfigMessages extends Configurator {
         config.addDefault("not-found-player", "&cPlayer not found!");
         config.addDefault("reloaded", "&aConfigurations reloaded!");
         config.addDefault("disposal", "&7Opening Disposal...");
+        config.addDefault("join", "&7[&a+&7] &b&l%player%");
+        config.addDefault("quit", "&7[&c-&7] &b&l%player%");
 
         config.addDefault("flight.enabled", "&7Flight &aenabled");
         config.addDefault("flight.enabled-other", "&7Flight &aenabled &7for &b%player%");

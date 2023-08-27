@@ -1,10 +1,7 @@
 package me.z1haze.levelup;
 
 import me.z1haze.levelup.commands.Commands;
-import me.z1haze.levelup.config.ConfigAE;
-import me.z1haze.levelup.config.ConfigDiscord;
-import me.z1haze.levelup.config.ConfigMessages;
-import me.z1haze.levelup.config.Configurator;
+import me.z1haze.levelup.config.*;
 import me.z1haze.levelup.discord.Discord;
 import me.z1haze.levelup.listeners.*;
 import me.z1haze.levelup.managers.PermissionsManager;
@@ -38,6 +35,7 @@ public final class LevelUp extends JavaPlugin {
 
         initConfigs();
 
+        protocolLibSupport = new ProtocolLibSupport();
         permissionsManager = new PermissionsManager();
         playerDataManager = new PlayerDataManager();
         discord = new Discord();
@@ -48,7 +46,6 @@ public final class LevelUp extends JavaPlugin {
 
         registerEvents();
 
-        protocolLibSupport = new ProtocolLibSupport();
         new ActionBarCompatHandler().registerListeners();
         actionBar.startUpdateActionBar();
     }
@@ -56,22 +53,25 @@ public final class LevelUp extends JavaPlugin {
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
 
-        // keep player profile data up to date
+        // load this first, so we can get a record of their player data in memory
         pm.registerEvents(new LevelUpPlayerListener(), this);
 
-        // control when/where players can fly
+        // handle accept/reject of server resource pack. must be after profiles are loaded
+        pm.registerEvents(new ResourcePackListener(), this);
+
+        // control when/where players can fly, order does not matter
         pm.registerEvents(new PlayerFlightListener(), this);
 
-        // send chat message to discord
+        // send chat message to discord. must be after discord is initialized
         pm.registerEvents(new MessagesToDiscordListener(), this);
 
-        // sync a linked player's groups with discord roles
+        // sync a linked player's groups with discord roles. must be after discord is initialized
         pm.registerEvents(new DiscordRoleSyncListener(), this);
 
-        // remove loot that shouldn't be in random loot chests caused by advanced enchantments
+        // remove loot that shouldn't be in random loot chests caused by advanced enchantments. order does not matter
         pm.registerEvents(new PlayerLootListener(), this);
 
-        // listen for config updates
+        // listen for config updates. order does not matter
         pm.registerEvents(new ConfigReloadListener(), this);
 
         actionBar = new ActionBar();
@@ -94,6 +94,7 @@ public final class LevelUp extends JavaPlugin {
     }
 
     private void initConfigs() {
+        configs.put("config", new ConfigGeneral(this, "config.yml"));
         configs.put("messages", new ConfigMessages(this, "messages.yml"));
         configs.put("discord", new ConfigDiscord(this, "discord.yml"));
         configs.put("ae", new ConfigAE(this, "ae.yml"));

@@ -3,6 +3,7 @@ package me.z1haze.levelup.ui;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.z1haze.levelup.LevelUp;
 import me.z1haze.levelup.events.ConfigChangeEvent;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -57,6 +58,11 @@ public class ActionBar implements Listener {
             for (Player p : instance.getServer().getOnlinePlayers()) {
                 if (!currentAction.containsKey(p.getUniqueId())) {
                     currentAction.put(p.getUniqueId(), 0);
+                }
+
+                if (p.getGameMode() != GameMode.SURVIVAL) {
+                    resetActionBar(p.getUniqueId());
+                    continue;
                 }
 
                 if (!isPaused.contains(p.getUniqueId())) {
