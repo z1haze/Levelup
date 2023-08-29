@@ -56,9 +56,6 @@ public final class LevelUp extends JavaPlugin {
         // load this first, so we can get a record of their player data in memory
         pm.registerEvents(new LevelUpPlayerListener(), this);
 
-        // handle accept/reject of server resource pack. must be after profiles are loaded
-        pm.registerEvents(new ResourcePackListener(), this);
-
         // control when/where players can fly, order does not matter
         pm.registerEvents(new PlayerFlightListener(), this);
 
