@@ -63,7 +63,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputDirectory>/Users/stephen/Desktop/mcdev/plugins</outputDirectory>
+                            <outputDirectory>/Users/stephen/Desktop/mc/main/plugins</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -147,8 +147,8 @@
         <dependency>
             <groupId>io.github.battlepass</groupId>
             <artifactId>battlepass</artifactId>
-            <version>LATEST</version>
-            <systemPath>${basedir}/BattlePass-3.18.8.jar</systemPath>
+            <version>4.0.0</version>
+            <systemPath>${basedir}/BattlePass-4.0.0.jar</systemPath>
             <scope>system</scope>
         </dependency>
 

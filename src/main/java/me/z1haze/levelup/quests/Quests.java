@@ -1,12 +1,13 @@
 package me.z1haze.levelup.quests;
 
 import io.github.battlepass.BattlePlugin;
-import io.github.battlepass.registry.quest.QuestRegistry;
+import net.advancedplugins.bp.impl.actions.ActionRegistry;
 
 public class Quests {
     public Quests() {
-        QuestRegistry questRegistry = BattlePlugin.getApi().getQuestRegistry();
+        ActionRegistry actionRegistry = BattlePlugin.getApi().getActionRegistry();
 
-        questRegistry.quest(BuildCreatureQuest::new);
+        actionRegistry.quest(instance -> new BlockBreakSilk((BattlePlugin) instance));
+        actionRegistry.quest(instance -> new BuildCreatureQuest((BattlePlugin) instance));
     }
 }

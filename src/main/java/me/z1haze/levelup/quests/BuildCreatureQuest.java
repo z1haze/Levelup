@@ -1,7 +1,7 @@
 package me.z1haze.levelup.quests;
 
 import io.github.battlepass.BattlePlugin;
-import io.github.battlepass.quests.QuestExecutor;
+import net.advancedplugins.bp.impl.actions.containers.ActionContainer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-public class BuildCreatureQuest extends QuestExecutor {
+public class BuildCreatureQuest extends ActionContainer {
     public BuildCreatureQuest(BattlePlugin battlePlugin) {
         super(battlePlugin);
     }
