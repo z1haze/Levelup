@@ -1,6 +1,5 @@
 package me.z1haze.levelup.quests;
 
-import io.github.battlepass.BattlePlugin;
 import net.advancedplugins.bp.impl.actions.containers.ActionContainer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -8,10 +7,11 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class BuildCreatureQuest extends ActionContainer {
-    public BuildCreatureQuest(BattlePlugin battlePlugin) {
-        super(battlePlugin);
+    public BuildCreatureQuest(JavaPlugin plugin) {
+        super(plugin);
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -29,9 +29,10 @@ public class BuildCreatureQuest extends ActionContainer {
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getLocation().distanceSquared(entityLocation) <= Math.pow(5, 2)) {
+                System.out.println("Player is within 5 blocks of built mob");
                 executionBuilder("build-creature")
                         .player(p)
-                        .root(entity.getType().toString())
+                        .root(entity.getType().toString().toLowerCase())
                         .progressSingle()
                         .buildAndExecute();
             }

@@ -7,7 +7,8 @@ public class Quests {
     public Quests() {
         ActionRegistry actionRegistry = BattlePlugin.getApi().getActionRegistry();
 
-        actionRegistry.quest(instance -> new BlockBreakSilk((BattlePlugin) instance));
-        actionRegistry.quest(instance -> new BuildCreatureQuest((BattlePlugin) instance));
+        actionRegistry.quest(BlockBreakSilkQuest::new);
+        actionRegistry.quest(BuildCreatureQuest::new);
+        actionRegistry.quest(AureliumSkillsQuests::new);
     }
 }
